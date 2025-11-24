@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { GameEngine } from './components/GameEngine';
 import { WelcomeScreen } from './components/WelcomeScreen';
@@ -25,9 +26,27 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-green-950 flex items-center justify-center font-sans overflow-hidden bg-[url('https://picsum.photos/1920/1080?grayscale&blur=10')] bg-cover bg-center">
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+    <div className="min-h-screen bg-black flex items-center justify-center font-sans overflow-hidden relative">
+      {/* Global CSS for CRT lines */}
+      <style>{`
+        .scanlines {
+          background: linear-gradient(
+            to bottom,
+            rgba(255,255,255,0),
+            rgba(255,255,255,0) 50%,
+            rgba(0,0,0,0.2) 50%,
+            rgba(0,0,0,0.2)
+          );
+          background-size: 100% 4px;
+          pointer-events: none;
+        }
+      `}</style>
+
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black opacity-80"></div>
+      
+      {/* Scanline Overlay */}
+      <div className="absolute inset-0 scanlines z-50 opacity-20"></div>
       
       {/* Main Content Area */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">

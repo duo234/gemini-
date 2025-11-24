@@ -5,15 +5,15 @@ export enum GameState {
 }
 
 export enum MushroomType {
-  NORMAL = 'NORMAL', // Red
-  GOLDEN = 'GOLDEN', // Yellow
-  POISON = 'POISON', // Purple
+  NORMAL = 'NORMAL', // Red (Beat)
+  GOLDEN = 'GOLDEN', // Yellow (Melody)
+  POISON = 'POISON', // Purple (Obstacle)
 }
 
 export interface Mushroom {
   id: string;
-  x: number;
-  y: number;
+  lane: -1 | 0 | 1; // Left, Center, Right
+  z: number; // Depth distance from camera
   type: MushroomType;
   points: number;
 }
@@ -23,4 +23,5 @@ export interface GameStats {
   normalCount: number;
   goldenCount: number;
   poisonCount: number;
+  maxCombo: number;
 }

@@ -82,7 +82,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
   };
 
   return (
-    <div className="relative bg-white/95 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-4 border-green-800 animate-fade-in">
+    <div className="relative bg-white/95 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-4 border-purple-800 animate-fade-in">
       {/* Share Controls */}
       <div className="absolute top-3 right-3 flex gap-2">
         <button 
@@ -96,7 +96,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         </button>
         <button 
           onClick={handleShare}
-          className="text-green-700 bg-green-100 hover:bg-green-200 p-2 rounded-full transition-all"
+          className="text-purple-700 bg-purple-100 hover:bg-purple-200 p-2 rounded-full transition-all"
           title="Copy Link"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -119,13 +119,13 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
       {showQRCode && (
         <div className="absolute inset-0 bg-black/90 rounded-2xl z-50 flex flex-col items-center justify-center animate-fade-in p-4" onClick={() => setShowQRCode(false)}>
           <div className="bg-white p-4 rounded-xl shadow-2xl text-center" onClick={e => e.stopPropagation()}>
-             <p className="text-green-900 font-bold mb-2 font-pixel text-lg">Scan via WeChat</p>
+             <p className="text-purple-900 font-bold mb-2 font-pixel text-lg">Scan via WeChat</p>
              <img 
                src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(window.location.href)}`} 
                alt="QR Code" 
-               className="w-48 h-48 mb-2 border-2 border-green-100 rounded"
+               className="w-48 h-48 mb-2 border-2 border-purple-100 rounded"
              />
-             <p className="text-xs text-gray-500 mb-3">Share with friends!</p>
+             <p className="text-xs text-gray-500 mb-3">Play Rhythm Mode!</p>
              <button 
                onClick={() => setShowQRCode(false)}
                className="text-sm text-red-500 font-bold hover:underline"
@@ -136,17 +136,17 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         </div>
       )}
 
-      <h1 className="text-5xl font-pixel text-green-900 mb-2 mt-4">Mushroom Rush</h1>
-      <p className="text-gray-600 mb-6 font-pixel text-xl">Help the Forest Kid collect mushrooms!</p>
+      <h1 className="text-4xl font-pixel text-purple-900 mb-2 mt-4 uppercase tracking-tighter">Neon Mushroom<br/><span className="text-6xl text-green-500" style={{textShadow: '2px 2px 0 #000'}}>Beats</span></h1>
+      <p className="text-gray-600 mb-6 font-pixel text-xl">3D Music Rhythm Runner</p>
       
       <div className="mb-6 flex flex-col items-center">
         <div className="relative group">
-          <label className="w-32 h-32 border-4 border-dashed border-green-400 rounded-xl flex items-center justify-center cursor-pointer hover:bg-green-50 transition-colors overflow-hidden bg-green-50/50">
+          <label className="w-32 h-32 border-4 border-dashed border-purple-400 rounded-xl flex items-center justify-center cursor-pointer hover:bg-purple-50 transition-colors overflow-hidden bg-purple-50/50">
             <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
             {preview ? (
               <img src={preview} alt="Character" className="w-full h-full object-contain image-pixelated" style={{ imageRendering: 'pixelated' }} />
             ) : (
-              <div className="text-green-500 text-center p-2">
+              <div className="text-purple-500 text-center p-2">
                 <span className="text-xs font-bold uppercase">Loading...</span>
               </div>
             )}
@@ -156,43 +156,32 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
             </div>
           </label>
         </div>
-
-        {preview !== DEFAULT_CHAR_SRC && (
-          <button 
-            onClick={loadDefaultChar}
-            className="text-xs text-green-600 underline mt-2 hover:text-green-800"
-          >
-            Reset to Default Hero
-          </button>
-        )}
       </div>
 
       <button
         onClick={handleStart}
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-pixel text-2xl py-3 rounded-xl shadow-lg border-b-4 border-green-800 active:border-b-0 active:translate-y-1 transition-all mb-4"
+        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-pixel text-2xl py-3 rounded-xl shadow-lg border-b-4 border-purple-800 active:border-b-0 active:translate-y-1 transition-all mb-4"
       >
-        START ADVENTURE
+        START MUSIC RUN
       </button>
 
-      <div className="text-sm text-gray-600 bg-orange-50 p-4 rounded-lg border border-orange-200 text-left">
-        <p className="font-bold font-pixel text-lg mb-2 text-orange-900">How to play:</p>
+      <div className="text-sm text-gray-600 bg-blue-50 p-4 rounded-lg border border-blue-200 text-left">
+        <p className="font-bold font-pixel text-lg mb-2 text-blue-900">How to play:</p>
         <ul className="space-y-2 font-mono text-xs">
           <li className="flex items-center">
-            <span className="w-3 h-3 bg-red-500 rounded-sm mr-2 block"></span> 
-            Collect Red Mushrooms <span className="font-bold text-green-700 ml-auto">+10 pts</span>
+            <span className="w-6 h-6 bg-gray-800 text-white rounded mr-2 flex items-center justify-center font-bold">←</span> 
+            <span className="w-6 h-6 bg-gray-800 text-white rounded mr-2 flex items-center justify-center font-bold">→</span> 
+            Switch Lanes to the Beat
           </li>
           <li className="flex items-center">
-            <span className="w-3 h-3 bg-yellow-400 rounded-sm mr-2 block"></span> 
-            Find Golden Mushrooms <span className="font-bold text-green-700 ml-auto">+50 pts</span>
+            <span className="w-3 h-3 bg-red-500 rounded-sm mr-2 block"></span> 
+            Catch Mushrooms for Points
           </li>
           <li className="flex items-center">
             <span className="w-3 h-3 bg-purple-600 rounded-sm mr-2 block"></span> 
-            Avoid Poison Mushrooms <span className="font-bold text-red-700 ml-auto">-20 pts</span>
+            AVOID Spikes (Breaks Combo)
           </li>
         </ul>
-        <div className="mt-3 text-center text-xs text-gray-400">
-          Use Arrow Keys or Touch Controls
-        </div>
       </div>
     </div>
   );
